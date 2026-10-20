@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="940" height="430" viewBox="0 0 940 430" role="img" aria-labelledby="title desc">
+<title id="title">Effect of claim-line counting on estimated age slope in an invented Monte Carlo simulation</title>
+<desc id="desc">Using 80 paired simulated replications with known true age coefficient 0.18, the corrected claim-level coefficient averaged 0.1782 in both scenarios. The naive line-count coefficient averaged 0.1780 under uniform extra-line probability and 0.2898 under age-dependent extra-line probability. No real CMS data were used.</desc>
+<rect width="940" height="430" rx="18" fill="#f9fafb"/>
+<text x="48" y="46" font-family="Arial,Helvetica,sans-serif" font-size="24" font-weight="700" fill="#111827">How counting claim lines can distort an age coefficient</text>
+<text x="48" y="72" font-family="Arial,Helvetica,sans-serif" font-size="13" fill="#4b5563">80 paired replications · n=600 invented beneficiaries each · KNOWN-TRUTH SIMULATION ONLY</text>
+<rect x="72" y="102" width="816" height="243" rx="8" fill="#ffffff" stroke="#e5e7eb"/>
+<g stroke="#e5e7eb" stroke-width="1">
+<line x1="130" y1="117" x2="840" y2="117"/>
+<line x1="130" y1="172" x2="840" y2="172"/>
+<line x1="130" y1="227" x2="840" y2="227"/>
+<line x1="130" y1="282" x2="840" y2="282"/>
+<line x1="130" y1="337" x2="840" y2="337"/>
+</g>
+<g fill="#374151" font-family="Arial,Helvetica,sans-serif" font-size="12" text-anchor="end">
+<text x="119" y="121">0.32</text><text x="119" y="176">0.27</text><text x="119" y="231">0.22</text><text x="119" y="286">0.17</text><text x="119" y="341">0.12</text>
+</g>
+<line x1="130" y1="271" x2="840" y2="271" stroke="#111827" stroke-width="2" stroke-dasharray="7 6"/>
+<text x="835" y="260" font-family="Arial,Helvetica,sans-serif" font-size="12" text-anchor="end" fill="#111827">Known truth = 0.180</text>
+<g stroke-width="3">
+<line x1="308" y1="273" x2="370" y2="274" stroke="#9ca3af"/>
+<line x1="627" y1="273" x2="690" y2="140" stroke="#9ca3af"/>
+</g>
+<circle cx="308" cy="273" r="9" fill="#2563eb" stroke="#ffffff" stroke-width="2"/>
+<polygon points="370,263 381,274 370,285 359,274" fill="#d97706" stroke="#ffffff" stroke-width="2"/>
+<circle cx="627" cy="273" r="9" fill="#2563eb" stroke="#ffffff" stroke-width="2"/>
+<polygon points="690,129 701,140 690,151 679,140" fill="#d97706" stroke="#ffffff" stroke-width="2"/>
+<g font-family="Arial,Helvetica,sans-serif" font-weight="600" font-size="14" text-anchor="middle" fill="#111827">
+<text x="306" y="297">0.1782</text><text x="383" y="303">0.1780</text>
+<text x="626" y="299">0.1782</text><text x="694" y="120">0.2898</text>
+</g>
+<g font-family="Arial,Helvetica,sans-serif" font-size="15" fill="#111827" text-anchor="middle">
+<text x="338" y="376">Age-independent line multiplicity</text>
+<text x="662" y="376">Age-dependent line multiplicity</text>
+</g>
+<circle cx="118" cy="406" r="6" fill="#2563eb"/><text x="134" y="410" font-family="Arial,Helvetica,sans-serif" font-size="12" fill="#374151">Correctly counted claims</text>
+<polygon points="327,399 334,406 327,413 320,406" fill="#d97706"/><text x="345" y="410" font-family="Arial,Helvetica,sans-serif" font-size="12" fill="#374151">Naively counted claim lines</text>
+<text x="888" y="410" font-family="Arial,Helvetica,sans-serif" font-size="11" text-anchor="end" fill="#6b7280">Simulated · noncausal · not CMS results</text>
+</svg>
