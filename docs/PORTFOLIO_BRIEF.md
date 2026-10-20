@@ -21,7 +21,7 @@ The project tackles a consequential upstream issue in health administrative data
 | Model assessment | Pearson dispersion, AIC comparisons, zero-count diagnostics and in-sample age-band calibration |
 | Uncertainty quantification | HC3 Wald intervals and seeded beneficiary-bootstrap percentile intervals |
 | Simulation methodology | Paired known-truth Monte Carlo scenarios with age-independent and age-dependent claim-line multiplicity |
-| Computational reproducibility | Python packaging, deterministic random seeds, tests, continuous integration, aggregate-only research reports |
+| Computational reproducibility | Python packaging, deterministic random seeds, SHA-256 local input manifests, tests, continuous integration, aggregate-only research reports |
 
 ## Research results: explicitly simulated, not real Medicare estimates
 
