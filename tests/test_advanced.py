@@ -25,8 +25,8 @@ def test_advanced_outputs_include_valid_ci_model_checks_and_plots(tmp_path):
     )
     assert set(output.service) == {"outpatient", "inpatient"}
     assert (output["n"] == 100).all()
-    assert (output["irr_ci_low"] <= output["incidence_count_ratio"]).all()
-    assert (output["irr_ci_high"] >= output["incidence_count_ratio"]).all()
+    assert (output["count_ratio_ci_low"] <= output["conditional_count_ratio"]).all()
+    assert (output["count_ratio_ci_high"] >= output["conditional_count_ratio"]).all()
     assert (output["bootstrap_successful_replications"] >= 8).all()
     assert np.isfinite(output["poisson_aic"]).all()
     assert (output["observed_zero_fraction"].between(0, 1)).all()
