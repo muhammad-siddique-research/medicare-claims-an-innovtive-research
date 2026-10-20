@@ -9,12 +9,12 @@ import argparse
 import json
 from pathlib import Path
 
-import matplotlib
-matplotlib.use("Agg")
 import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd
 import statsmodels.api as sm
+
+plt.switch_backend("Agg")
 
 
 def _fit_slope(outcome: np.ndarray, age_decades: np.ndarray) -> float:
