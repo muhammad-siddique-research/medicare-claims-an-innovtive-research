@@ -68,6 +68,7 @@ def test_advanced_rejects_invalid_analytic_inputs(tmp_path, mode):
     if mode == "negative":
         frame.loc[0, "outpatient_claims"] = -1
     elif mode == "fractional":
+        frame["outpatient_claims"] = frame["outpatient_claims"].astype(float)
         frame.loc[0, "outpatient_claims"] = 1.25
     elif mode == "young":
         frame.loc[0, "age"] = 53
