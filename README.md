@@ -1,8 +1,49 @@
-# Medicare Claims Analytics — Python, Econometrics & Reproducible Research
+# Medicare Claims Integrity Lab
+### Python · Health Economics · Claims-Data Engineering · Monte Carlo Validation
 
 [![Python CI](https://img.shields.io/badge/CI-GitHub_Actions-informational)](#automated-tests)
 ![Data](https://img.shields.io/badge/data-CMS_synthetic_RIF%20%2F%20toy_fixtures-blue)
 ![Research](https://img.shields.io/badge/scope-methods_demonstration_only-orange)
+
+## Research at a glance
+
+> **Central question:** When multiple billable lines belong to one healthcare claim, how much can a **line-versus-claim counting error** distort estimated utilization and an age-related count-model coefficient?
+
+**Research theme:** *From raw claims to defensible inference: claim-granularity auditing and a reproducible measurement-error stress test.* This is a Python-first **computational research portfolio**, not a published scientific discovery. The novel element *within this repository* is a fully scripted falsification-style experiment: correctly counted synthetic claims are compared with naively counted claim lines under uniform versus age-dependent line multiplicity.
+
+| Component | Scholarly value | Verified scope |
+|---|---|---|
+| **Claims architecture** | Claim-line deduplication, beneficiary-level linkage, transparent exclusions | Tested on invented toy fixture |
+| **Computational Econometrics** | Poisson HC3, NB2 when estimable, overdispersion diagnostics | Descriptive synthetic models only |
+| **Monte Carlo stress test** | Paired scenarios with known true slope and explicit measurement-error mechanism | Fully invented data; runnable Python module |
+| **Research protocol** | Hypotheses, identification limits, falsification, sensitivity designs, reproducibility | [Read the scholarly research study](docs/RESEARCH_STUDY.md) |
+| **Scientific integrity** | No invented patient claims presented as CMS findings; official CMS files not bundled | Official CMS run pending |
+
+### Research workflow
+
+```mermaid
+flowchart LR
+    A["CMS synthetic RIF files<br/>(local download only)"] --> B["Parse, validate & audit"]
+    B --> C["Distinct claim keys"]
+    C --> D["Beneficiary counts"]
+    D --> E["Poisson HC3 / NB2"]
+    E --> F["Aggregate reports & caveats"]
+    G["Invented Monte Carlo counts"] --> H["Introduce claim-line multiplicity"]
+    H --> I["Correct claims vs naive lines"]
+    I --> J["Known-truth error comparison"]
+```
+
+### Independently reproducible simulation
+
+```bash
+python -m medicare_claims.stress_test --n-beneficiaries 600 --replications 80 --seed 20261020 --output-dir reports/stress_test
+```
+
+The experiment writes a figure, per-replication output, scenario summary, and provenance metadata. Its findings concern the **specified artificial data-generating process**, not actual Medicare beneficiaries. [Full methods, equations, hypotheses and literature](docs/RESEARCH_STUDY.md).
+
+### Primary methodological hypothesis
+
+**Age-correlated claim-line multiplicity can distort an estimated age–utilization coefficient if analysts mistake lines for unique claims.** An age-independent multiplicity scenario serves as a falsification comparator. The project is designed to *test* this mechanism; it does not assert that this mechanism has been observed in Medicare records. Previous literature on administrative-data selection bias and reporting motivates the research question but does **not** prove global novelty. See the [research background](docs/RESEARCH_STUDY.md#1-motivation-and-defensible-research-gap).
 
 **Research engineering demonstration:** construction and validation of beneficiary-level utilization data from **CMS Synthetic Medicare Enrollment, Fee-for-Service Claims, and Prescription Drug Event RIF files**. This project prioritizes documented Python pipelines, correct claim granularity, reproducible econometric methods and quality assurance. It is designed as a skills demonstration for collaborative applied-economics / health-economics research.
 
@@ -59,6 +100,7 @@ src/medicare_claims/
   report.py   aggregate summaries and charts
   toy.py      invented local fixture (NOT CMS data)
   cli.py      reproducible command line
+  stress_test.py  invented Monte Carlo measurement-error experiment
   __init__.py
 .github/workflows/ci.yml  automated tests and toy end-to-end pipeline
 tests/                    unit and integration tests
@@ -106,10 +148,18 @@ pytest -q
 
 The CI pipeline tests Python 3.10 and 3.12 and runs a deterministic toy end-to-end build. Test runs do not fetch official CMS data or export patient records.
 
+### Research conclusion
+
+**Conclusion:** The reproducible Python pipeline and Monte Carlo design show *how to test* a potential claims measurement error while retaining transparent QA and model diagnostics. They do not yet establish any empirical result from official CMS synthetic RIFs, any real-patient utilization effect, or a novel causal estimator. Full-scale validation against the CMS-supplied synthetic files is the next necessary research milestone.
+
 ### Data provenance and source references
 
 - Centers for Medicare & Medicaid Services. (2023). *Synthetic Medicare Enrollment, Fee-for-Service Claims, and Prescription Drug Event Data Public Use File: User guide.* [Official CMS user guide](https://data.cms.gov/sites/default/files/2023-05/d51e1218-68c3-4c7c-9598-0b81f22fe903/User%20Guide%20-%20CMS%20Synthetic%20RIF%20Files%20May%202023_AM508_v2.pdf).
 - Centers for Medicare & Medicaid Services. (n.d.). *Synthetic Medicare Enrollment, Fee-for-Service Claims, and Prescription Drug Event Data* [Data collection]. [CMS Data](https://data.cms.gov/collection/synthetic-medicare-enrollment-fee-for-service-claims-and-prescription-drug-event).
+- Benchimol, E. I., Smeeth, L., Guttmann, A., Harron, K., Moher, D., Petersen, I., Sørensen, H. T., von Elm, E., & Langan, S. M. (2015). The REporting of studies Conducted using Observational Routinely-collected health Data (RECORD) statement. *PLOS Medicine, 12*(10), e1001885. https://doi.org/10.1371/journal.pmed.1001885
+- Cameron, A. C., & Trivedi, P. K. (2013). *Regression analysis of count data* (2nd ed.). Cambridge University Press. https://cameron.econ.ucdavis.edu/racd2/
+- Dahlen, A., Deng, Y., & Charu, V. (2024). *Benchmarking commercial healthcare claims data* [Preprint]. medRxiv. https://doi.org/10.1101/2024.08.19.24312249
+- Virnig, B., & Parsons, H. (2021, March 16). *Strengths and limitations of CMS administrative data in research*. Research Data Assistance Center. https://www.resdac.org/articles/strengths-and-limitations-cms-administrative-data-research
 - Synthetic Health. (n.d.). *Synthetic RIF validation examples*. [GitHub repository](https://github.com/synthetichealth/rif-analysis). **Reference only; no project source code copied.**
 
 See the authoritative CMS guide for exact field definitions and release-specific limitations. The separate CMS 2008–2010 **DE-SynPUF** is *not the same dataset* and should not be mixed with this 2023 RIF pipeline.
