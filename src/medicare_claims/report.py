@@ -7,11 +7,13 @@ matplotlib.use("Agg")
 import matplotlib.pyplot as plt
 import pandas as pd
 from .models import fit_count_models
+from .advanced import run_advanced_analyses
 
 def write_outputs(panel: pd.DataFrame, qa: dict, output_dir: Path) -> dict:
     """Write aggregate outputs without beneficiary IDs."""
     output_dir.mkdir(parents=True, exist_ok=True)
     coef, report = fit_count_models(panel)
+    advanced = run_advanced_analyses(panel, output_dir)
     coef.to_csv(output_dir / "count_model_coefficients.csv", index=False)
     (output_dir / "data_quality.json").write_text(json.dumps(qa, indent=2), encoding="utf-8")
     (output_dir / "model_diagnostics.json").write_text(json.dumps(report, indent=2), encoding="utf-8")
@@ -38,12 +40,25 @@ def write_outputs(panel: pd.DataFrame, qa: dict, output_dir: Path) -> dict:
         f"- Synthetic beneficiary cohort: **{qa['cohort_rows']}** (age >= {qa['min_age']})",
         f"- Poisson dispersion diagnostic: **{report['poisson_pearson_dispersion']:.3f}**",
         f"- Count models: {', '.join(report['models_fitted'])}", "",
+        "## Advanced Econometric Diagnostics", "",
+        "Both inpatient and outpatient synthetic claim counts were analyzed using an age-per-decade",
+        "Poisson mean model, HC3 Wald uncertainty, and seeded beneficiary bootstrap.",
+        "Model comparisons (Poisson vs. intercept-only and NB2 if converged) are descriptive.",
+        "The outputs include age-band calibration, zero-count checks and coefficient plots.", "",
         "## Limitations", "",
         "Software/methods demonstration, not a clinical or policy estimate. ",
         "Synthetic data do not permit inference about actual Medicare beneficiaries. ",
         "FFS exposure is not established; zero claims need not imply zero healthcare use.", "",
         "## Quality assurance", "",
     ]
+    for item in advanced.itertuples():
+        lines.append(
+            f"- **{item.service}**: synthetic count ratio per decade = "
+            f"{item.incidence_count_ratio:.3f} "
+            f"(HC3 95% CI {item.irr_ci_low:.3f} to {item.irr_ci_high:.3f}); "
+            f"Pearson dispersion = {item.pearson_dispersion:.2f}."
+        )
+    lines.extend(["", "## Quality assurance", ""])
     for service, stat in qa["services"].items():
         lines.append(
             f"- **{service}**: {stat['rows_seen']:,} rows; "
