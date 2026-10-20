@@ -4,10 +4,11 @@ import json
 from pathlib import Path
 import matplotlib.pyplot as plt
 
-plt.switch_backend("Agg")
 import pandas as pd
 from .models import fit_count_models
 from .advanced import run_advanced_analyses
+
+plt.switch_backend("Agg")
 
 def write_outputs(panel: pd.DataFrame, qa: dict, output_dir: Path) -> dict:
     """Write aggregate outputs without beneficiary IDs."""
