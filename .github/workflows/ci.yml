@@ -21,3 +21,7 @@ jobs:
         run: |
           python -m medicare_claims.cli make-fixture --dest data/toy
           python -m medicare_claims.cli run --data-dir data/toy --year 2022 --output-dir reports/toy
+      - name: Run known-truth claim granularity experiment
+        run: |
+          python -m medicare_claims.stress_test --n-beneficiaries 90 --replications 2 --seed 21 --output-dir reports/stress_test
+          python -c "import json; from pathlib import Path; m=json.loads(Path('reports/stress_test/simulation_metadata.json').read_text()); assert m['cms_data_used'] is False"
