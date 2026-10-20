@@ -95,9 +95,9 @@ def _forest_plot(results: pd.DataFrame, path: Path) -> None:
     fig, ax = plt.subplots(figsize=(8, 4.5))
     for i, row in enumerate(results.itertuples()):
         ax.errorbar(
-            row.incidence_count_ratio, i,
-            xerr=[[row.incidence_count_ratio - row.irr_ci_low],
-                  [row.irr_ci_high - row.incidence_count_ratio]],
+            row.conditional_count_ratio, i,
+            xerr=[[row.conditional_count_ratio - row.count_ratio_ci_low],
+                  [row.count_ratio_ci_high - row.conditional_count_ratio]],
             fmt="o", capsize=5, markersize=8,
         )
     ax.axvline(1, linestyle="--", linewidth=1.2)
@@ -179,10 +179,10 @@ def run_advanced_analyses(
         records.append({
             "service": service, "n": len(y), "mean_observed_claims": float(y.mean()),
             "coefficient_per_decade": beta, "hc3_standard_error": se,
-            "incidence_count_ratio": float(np.exp(beta)),
-            "irr_ci_low": float(np.exp(ci_l)),
-            "irr_ci_high": float(np.exp(ci_u)),
-            "bootstrap_irr_ci_low": boot_l, "bootstrap_irr_ci_high": boot_u,
+            "conditional_count_ratio": float(np.exp(beta)),
+            "count_ratio_ci_low": float(np.exp(ci_l)),
+            "count_ratio_ci_high": float(np.exp(ci_u)),
+            "bootstrap_count_ratio_ci_low": boot_l, "bootstrap_count_ratio_ci_high": boot_u,
             "bootstrap_successful_replications": boots_ok,
             "poisson_aic": float(fit.aic), "intercept_only_poisson_aic": float(null.aic),
             "nb2_aic": nb_aic, "nb2_alpha": nb_alpha,
