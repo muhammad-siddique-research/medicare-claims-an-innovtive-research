@@ -2,9 +2,9 @@
 from __future__ import annotations
 import json
 from pathlib import Path
-import matplotlib
-matplotlib.use("Agg")
 import matplotlib.pyplot as plt
+
+plt.switch_backend("Agg")
 import pandas as pd
 from .models import fit_count_models
 from .advanced import run_advanced_analyses
