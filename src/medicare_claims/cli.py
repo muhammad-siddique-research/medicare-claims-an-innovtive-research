@@ -6,6 +6,7 @@ from .build import construct_panel
 from .io import read_beneficiaries
 from .report import write_outputs
 from .toy import make_toy_dataset
+from .provenance import write_input_manifest
 
 def main() -> None:
     parser = argparse.ArgumentParser(description="Synthetic Medicare RIF analysis")
@@ -33,6 +34,7 @@ def main() -> None:
         if (args.data_dir / "TOY_NOT_CMS.txt").exists()
         else "unverified_local"
     )
+    write_input_manifest(args.data_dir, args.year, args.output_dir)
     results = write_outputs(panel, qa, args.output_dir)
     print(f"Analyzed {len(panel):,} synthetic beneficiaries. Reports: {args.output_dir}")
     print("Models:", ", ".join(results["models_fitted"]))
