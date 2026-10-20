@@ -1,10 +1,15 @@
 # Medicare Claims Integrity Lab
 ### Python · Health Economics · Claims-Data Engineering · Monte Carlo Validation
 
-[![Python CI](https://img.shields.io/badge/CI-GitHub_Actions-informational)](#automated-tests)
-![Data](https://img.shields.io/badge/data-CMS_synthetic_RIF%20%2F%20toy_fixtures-blue)
-![Research](https://img.shields.io/badge/scope-methods_demonstration_only-orange)
+[![Python CI](https://github.com/muhammad-siddique-research/medicare-claims-python-research/actions/workflows/ci.yml/badge.svg)](https://github.com/muhammad-siddique-research/medicare-claims-python-research/actions/workflows/ci.yml)
+![Python](https://img.shields.io/badge/Python-3.10%20%7C%203.12-blue)
+![Methods](https://img.shields.io/badge/methods-Poisson%20HC3%20%7C%20NB2%20%7C%20Bootstrap-indigo)
+![Data](https://img.shields.io/badge/data-CMS%20synthetic%20%7C%20toy%20simulation-orange)
+![License](https://img.shields.io/badge/license-MIT-lightgrey)
 
+**Research portfolio:** [Study protocol](docs/RESEARCH_STUDY.md) · [Advanced Econometrics](docs/ECONOMETRIC_RESEARCH_NOTE.md) · [Simulation Findings](docs/SIMULATION_RESULTS.md) · [CMS Variable Mapping](docs/DATA_DICTIONARY.md) · [Portfolio Brief](docs/PORTFOLIO_BRIEF.md)
+
+> **Scope and provenance.** This project uses the *official CMS synthetic Medicare claims schema* as its research-engineering target. The current demonstrated results are from **separately invented toy/simulation data**, not an executed analysis of the official CMS files. No real patients, claims-based causal effects, or nationally representative estimates are claimed. The complete CMS-supplied synthetic archive still needs local download and validation.
 ## Research at a glance
 
 > **Central question:** When multiple billable lines belong to one healthcare claim, how much can a **line-versus-claim counting error** distort estimated utilization and an age-related count-model coefficient?
@@ -17,7 +22,18 @@
 | **Computational Econometrics** | Poisson HC3, NB2 when estimable, overdispersion diagnostics | Descriptive synthetic models only |
 | **Monte Carlo stress test** | Paired scenarios with known true slope and explicit measurement-error mechanism | Fully invented data; runnable Python module |
 | **Research protocol** | Hypotheses, identification limits, falsification, sensitivity designs, reproducibility | [Read the scholarly research study](docs/RESEARCH_STUDY.md) |
+| **Expanded inference** | HC3 confidence intervals, seeded beneficiary bootstrap, NB2 and AIC checks, observed versus fitted zeros | [Econometric research note](docs/ECONOMETRIC_RESEARCH_NOTE.md) |
 | **Scientific integrity** | No invented patient claims presented as CMS findings; official CMS files not bundled | Official CMS run pending |
+
+### What a Health Economics researcher can inspect
+
+**Claims-data integrity:** Why counting claim lines as unique claims can corrupt descriptive outcomes, how `BENE_ID` and `CLM_ID` are linked, and why incomplete FFS coverage must not be interpreted as zero utilization.
+
+**Transparent Econometrics:** Conditional mean assumptions, HC3 uncertainty, NB2 sensitivity, model adequacy, bootstrap intervals, and interpretations that explicitly distinguish *count ratios* from exposure-adjusted incidence rates.
+
+**Evidence-based engineering:** Fully executable Python code, automated tests, model diagnostics, independent simulation scenarios, and reproducible figure-generating commands.
+
+**Current empirical status:** Claims ingestion and diagnostics are tested on an invented fixture. Official CMS synthetic claims processing remains to be validated before any empirical finding is reported.
 
 ### Research workflow
 
@@ -139,6 +155,11 @@ The `reports/<run>/` directory is populated with:
 | `model_diagnostics.json` | Sample size, dispersion diagnostic and important limitations |
 | `outpatient_by_age.png` | Mean outpatient claims by age band (synthetic only) |
 | `RUN_SUMMARY.md` | Shareable plain-language documentation |
+| `advanced_econometric_diagnostics.csv` | Both services: age coefficients, HC3 intervals, bootstrap intervals, AIC, dispersion and zeros |
+| `age_associations_forest.png` | Descriptive age count ratios with 95% HC3 Wald intervals |
+| `calibration_{inpatient,outpatient}.png` | Observed-versus-fitted mean counts across age bands |
+| `observed_vs_expected_zeros.png` | Screening check for possible count-model misspecification |
+| `advanced_econometric_provenance.json` | Seed, bootstrap design, limitations and model scope |
 
 The code does not write joined, patient/beneficiary-level analytic tables to disk. This is intentional: while **CMS synthetic records are not PHI**, safe defaults encourage good handling of future restricted projects.
 
@@ -160,7 +181,7 @@ ruff check src tests
 pytest -q
 ```
 
-The CI pipeline tests Python 3.10 and 3.12 and runs a deterministic toy end-to-end build. Test runs do not fetch official CMS data or export patient records.
+The CI pipeline tests Python 3.10 and 3.12 and runs a deterministic toy end-to-end build. Test runs do not fetch official CMS data or export patient records. Each CI run also uploads **labeled, reproducible toy-data plots and aggregate reports** as GitHub Actions artifacts (14-day retention). Review the [workflow and generated artifacts](https://github.com/muhammad-siddique-research/medicare-claims-python-research/actions/workflows/ci.yml) from your signed-in account. Artifacts are not real CMS study outputs.
 
 ### Research conclusion
 
