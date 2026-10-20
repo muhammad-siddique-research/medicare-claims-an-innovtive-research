@@ -1,0 +1,45 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 600" role="img" aria-labelledby="t d">
+<title id="t">Medicare Claims Integrity Lab research framework</title>
+<desc id="d">An evidence-status-aware pipeline diagram. Official CMS synthetic RIF files, once downloaded, flow through validation, claim deduplication, analytical cohort construction, descriptive count models, bootstrap checks and reproducible aggregate reports. A completely separate invented simulation assesses claim-line counting distortion with known truth. Neither stream supports inference about real Medicare utilization.</desc>
+<rect width="1200" height="600" fill="#f8fafc"/>
+<rect width="1200" height="94" fill="#0f172a"/>
+<text x="40" y="43" font-size="28" font-weight="700" fill="#ffffff" font-family="Arial,Helvetica,sans-serif">MEDICARE CLAIMS INTEGRITY LAB</text>
+<text x="40" y="71" font-size="17" fill="#cbd5e1" font-family="Arial,Helvetica,sans-serif">Two distinct streams: reproducible claims engineering + known-truth computational validation</text>
+<rect x="37" y="114" width="542" height="47" rx="8" fill="#dbeafe"/>
+<text x="58" y="143" font-size="19" font-weight="700" fill="#1e3a8a" font-family="Arial,Helvetica,sans-serif">A · CLAIMS ENGINEERING PIPELINE</text>
+<rect x="617" y="114" width="546" height="47" rx="8" fill="#ffedd5"/>
+<text x="638" y="143" font-size="19" font-weight="700" fill="#9a3412" font-family="Arial,Helvetica,sans-serif">B · SIMULATION &amp; FALSIFICATION</text>
+<g font-family="Arial,Helvetica,sans-serif" font-size="17" text-anchor="middle">
+<rect x="67" y="180" width="480" height="60" rx="9" fill="#ffffff" stroke="#93c5fd" stroke-width="2"/>
+<text x="307" y="205" fill="#0f172a" font-weight="700">Official CMS synthetic RIF source</text>
+<text x="307" y="224" fill="#475569" font-size="13">Not yet verified in a complete repository run</text>
+<rect x="67" y="266" width="480" height="60" rx="9" fill="#ffffff" stroke="#93c5fd" stroke-width="2"/>
+<text x="307" y="289" fill="#0f172a" font-weight="700">Data integrity &amp; unique claim keys</text>
+<text x="307" y="309" fill="#475569" font-size="13">Dates · IDs · duplicates · payment conflicts</text>
+<rect x="67" y="352" width="480" height="60" rx="9" fill="#ffffff" stroke="#93c5fd" stroke-width="2"/>
+<text x="307" y="375" fill="#0f172a" font-weight="700">Poisson HC3 · NB2 · bootstraps</text>
+<text x="307" y="395" fill="#475569" font-size="13">Conditional count ratios · model adequacy</text>
+<rect x="67" y="438" width="480" height="60" rx="9" fill="#ffffff" stroke="#93c5fd" stroke-width="2"/>
+<text x="307" y="461" fill="#0f172a" font-weight="700">Figures, QA tables &amp; audit reports</text>
+<text x="307" y="481" fill="#475569" font-size="13">Aggregate-only outputs · no person-time rates</text>
+<rect x="648" y="180" width="482" height="60" rx="9" fill="#ffffff" stroke="#fdba74" stroke-width="2"/>
+<text x="889" y="205" fill="#0f172a" font-weight="700">Artificial population, known β = 0.18</text>
+<text x="889" y="224" fill="#475569" font-size="13">Invented beneficiaries and claim counts</text>
+<rect x="648" y="266" width="482" height="60" rx="9" fill="#ffffff" stroke="#fdba74" stroke-width="2"/>
+<text x="889" y="289" fill="#0f172a" font-weight="700">Uniform vs. age-dependent line counts</text>
+<text x="889" y="309" fill="#475569" font-size="13">Controlled measurement-error scenarios</text>
+<rect x="648" y="352" width="482" height="60" rx="9" fill="#ffffff" stroke="#fdba74" stroke-width="2"/>
+<text x="889" y="375" fill="#0f172a" font-weight="700">Compare naive and corrected estimates</text>
+<text x="889" y="395" fill="#475569" font-size="13">Slope distortion · absolute error · inflation</text>
+<rect x="648" y="438" width="482" height="60" rx="9" fill="#ffffff" stroke="#fdba74" stroke-width="2"/>
+<text x="889" y="461" fill="#0f172a" font-weight="700">Falsifiable benchmark &amp; visual summary</text>
+<text x="889" y="481" fill="#475569" font-size="13">Reproducible seed · no clinical inferences</text>
+</g>
+<g stroke-width="2.5" stroke-linecap="round" fill="none">
+<path d="M307 240 V260 M300 253 L307 260 314 253 M307 326 V346 M300 339 L307 346 314 339 M307 412 V432 M300 425 L307 432 314 425" stroke="#2563eb"/>
+<path d="M889 240 V260 M882 253 L889 260 896 253 M889 326 V346 M882 339 L889 346 896 339 M889 412 V432 M882 425 L889 432 896 425" stroke="#ea580c"/>
+</g>
+<rect x="40" y="520" width="1120" height="57" rx="9" fill="#e2e8f0"/>
+<text x="600" y="544" font-size="16" font-family="Arial,Helvetica,sans-serif" text-anchor="middle" font-weight="700" fill="#0f172a">EVIDENCE STATUS: Development &amp; synthetic simulation; not population inference</text>
+<text x="600" y="563" font-size="13" font-family="Arial,Helvetica,sans-serif" text-anchor="middle" fill="#475569">The official CMS data product is real, but the project's published numerical demonstration uses artificial records.</text>
+</svg>
