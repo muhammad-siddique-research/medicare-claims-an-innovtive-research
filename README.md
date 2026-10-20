@@ -158,7 +158,7 @@ The CI pipeline tests Python 3.10 and 3.12 and runs a deterministic toy end-to-e
 - Centers for Medicare & Medicaid Services. (n.d.). *Synthetic Medicare Enrollment, Fee-for-Service Claims, and Prescription Drug Event Data* [Data collection]. [CMS Data](https://data.cms.gov/collection/synthetic-medicare-enrollment-fee-for-service-claims-and-prescription-drug-event).
 - Benchimol, E. I., Smeeth, L., Guttmann, A., Harron, K., Moher, D., Petersen, I., Sørensen, H. T., von Elm, E., & Langan, S. M. (2015). The REporting of studies Conducted using Observational Routinely-collected health Data (RECORD) statement. *PLOS Medicine, 12*(10), e1001885. https://doi.org/10.1371/journal.pmed.1001885
 - Cameron, A. C., & Trivedi, P. K. (2013). *Regression analysis of count data* (2nd ed.). Cambridge University Press. https://cameron.econ.ucdavis.edu/racd2/
-- Dahlen, A., Deng, Y., & Charu, V. (2024). *Benchmarking commercial healthcare claims data* [Preprint]. medRxiv. https://doi.org/10.1101/2024.08.19.24312249
+- Dahlen, A., Deng, Y., & Charu, V. (2025). Evaluating the generalizability of commercial healthcare claims data. *American Journal of Epidemiology, 194*(10), 2999–3006. https://doi.org/10.1093/aje/kwaf142
 - Virnig, B., & Parsons, H. (2021, March 16). *Strengths and limitations of CMS administrative data in research*. Research Data Assistance Center. https://www.resdac.org/articles/strengths-and-limitations-cms-administrative-data-research
 - Synthetic Health. (n.d.). *Synthetic RIF validation examples*. [GitHub repository](https://github.com/synthetichealth/rif-analysis). **Reference only; no project source code copied.**
 
