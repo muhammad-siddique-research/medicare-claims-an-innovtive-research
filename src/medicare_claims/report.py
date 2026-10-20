@@ -54,8 +54,8 @@ def write_outputs(panel: pd.DataFrame, qa: dict, output_dir: Path) -> dict:
     for item in advanced.itertuples():
         lines.append(
             f"- **{item.service}**: synthetic count ratio per decade = "
-            f"{item.incidence_count_ratio:.3f} "
-            f"(HC3 95% CI {item.irr_ci_low:.3f} to {item.irr_ci_high:.3f}); "
+            f"{item.conditional_count_ratio:.3f} "
+            f"(HC3 95% CI {item.count_ratio_ci_low:.3f} to {item.count_ratio_ci_high:.3f}); "
             f"Pearson dispersion = {item.pearson_dispersion:.2f}."
         )
     lines.extend(["", "## Quality assurance", ""])
