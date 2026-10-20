@@ -71,6 +71,18 @@ A paired Monte Carlo example using **invented data only** (80 replications, 600 
 
 These are **not official CMS analyses** or estimates of real bias. The scenario demonstrates how covariate-dependent line counts can alter an apparent association. See the [simulation results, assumptions, and reproducible command](docs/SIMULATION_RESULTS.md).
 
+### Visual explanation: why the coefficient changes
+
+![Theoretical claim-count and claim-line curves showing uniform versus age-dependent measurement error](docs/figures/theoretical_claim_line_distortion.svg)
+
+The curves are **analytic expectations from the invented simulation**, not observed CMS trends. If each claim generates an extra line with probability `p(age)`, then:
+
+```text
+E[naive claim-line count | age] = E[unique claims | age] * (1 + p(age)).
+```
+
+When `p(age)` is constant, the log-count difference is an intercept shift. When multiplicity rises with age, its log contribution varies with age, potentially distorting the slope. A derivation, the formal statistical assumptions, robustness criteria, and interpretive limits appear in the [Econometric Research Note](docs/ECONOMETRIC_RESEARCH_NOTE.md).
+
 ### Primary methodological hypothesis
 
 **Age-correlated claim-line multiplicity can distort an estimated age–utilization coefficient if analysts mistake lines for unique claims.** An age-independent multiplicity scenario serves as a falsification comparator. The project is designed to *test* this mechanism; it does not assert that this mechanism has been observed in Medicare records. Previous literature on administrative-data selection bias and reporting motivates the research question but does **not** prove global novelty. See the [research background](docs/RESEARCH_STUDY.md#1-motivation-and-defensible-research-gap).
@@ -160,6 +172,7 @@ The `reports/<run>/` directory is populated with:
 | `calibration_{inpatient,outpatient}.png` | Observed-versus-fitted mean counts across age bands |
 | `observed_vs_expected_zeros.png` | Screening check for possible count-model misspecification |
 | `advanced_econometric_provenance.json` | Seed, bootstrap design, limitations and model scope |
+| `RESEARCH_REPORT.md` | Generated publication-style narrative with model table, embedded figures, QA, limitations and references |
 
 The code does not write joined, patient/beneficiary-level analytic tables to disk. This is intentional: while **CMS synthetic records are not PHI**, safe defaults encourage good handling of future restricted projects.
 
