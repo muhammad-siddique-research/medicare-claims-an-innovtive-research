@@ -41,6 +41,20 @@ python -m medicare_claims.stress_test --n-beneficiaries 600 --replications 80 --
 
 The experiment writes a figure, per-replication output, scenario summary, and provenance metadata. Its findings concern the **specified artificial data-generating process**, not actual Medicare beneficiaries. [Full methods, equations, hypotheses and literature](docs/RESEARCH_STUDY.md).
 
+### Illustrated result: one counting mistake, two distinct effects
+
+![Known-truth simulation comparing claim counts and claim-line counts](docs/figures/claim_granularity_monte_carlo.svg)
+
+A paired Monte Carlo example using **invented data only** (80 replications, 600 invented beneficiaries per replication, known age coefficient 0.180) produced:
+
+| Counting approach | Uniform line multiplicity | Age-dependent line multiplicity |
+|---|---:|---:|
+| Correct claim-level slope | **0.1782** | **0.1782** |
+| Naive claim-line slope | 0.1780 | **0.2898** |
+| Mean naive lines per correct claim | 1.1395 | 1.3567 |
+
+These are **not official CMS analyses** or estimates of real bias. The scenario demonstrates how covariate-dependent line counts can alter an apparent association. See the [simulation results, assumptions, and reproducible command](docs/SIMULATION_RESULTS.md).
+
 ### Primary methodological hypothesis
 
 **Age-correlated claim-line multiplicity can distort an estimated age–utilization coefficient if analysts mistake lines for unique claims.** An age-independent multiplicity scenario serves as a falsification comparator. The project is designed to *test* this mechanism; it does not assert that this mechanism has been observed in Medicare records. Previous literature on administrative-data selection bias and reporting motivates the research question but does **not** prove global novelty. See the [research background](docs/RESEARCH_STUDY.md#1-motivation-and-defensible-research-gap).
