@@ -17,7 +17,7 @@
 
 ## 1. Motivation and defensible research gap
 
-Health Economics studies often require transforming payment-oriented administrative data into meaningful measures of patient utilization. Claims capture reimbursed or billable events and can omit services, clinical severity, and information needed for population-wide inference. The RECORD statement emphasizes reporting data cleaning, linkage, variable derivation, and sensitivity analyses (Benchimol et al., 2015). Recent research has also demonstrated that commercial claims estimates may differ from appropriate population benchmarks (Dahlen et al., 2024), although that study addresses *coverage and selection bias*, not the exact claim-line error tested here.
+Health Economics studies often require transforming payment-oriented administrative data into meaningful measures of patient utilization. Claims capture reimbursed or billable events and can omit services, clinical severity, and information needed for population-wide inference. The RECORD statement emphasizes reporting data cleaning, linkage, variable derivation, and sensitivity analyses (Benchimol et al., 2015). Recent research has also demonstrated that commercial claims estimates may differ from appropriate population benchmarks (Dahlen et al., 2025), although that study addresses *coverage and selection bias*, not the exact claim-line error tested here.
 
 **Practical methodological question:** How sensitive is an estimated age–utilization association to a mistaken unit of analysis (claim line versus distinct claim), especially if line multiplicity itself varies with age?
 
@@ -160,7 +160,7 @@ Cameron, A. C., & Trivedi, P. K. (2013). *Regression analysis of count data* (2n
 
 Centers for Medicare & Medicaid Services. (2023). *Synthetic Medicare enrollment, fee-for-service claims, and prescription drug event data public use file: User guide*. https://data.cms.gov/sites/default/files/2023-05/d51e1218-68c3-4c7c-9598-0b81f22fe903/User%20Guide%20-%20CMS%20Synthetic%20RIF%20Files%20May%202023_AM508_v2.pdf
 
-Dahlen, A., Deng, Y., & Charu, V. (2024). *Benchmarking commercial healthcare claims data* [Preprint]. medRxiv. https://doi.org/10.1101/2024.08.19.24312249
+Dahlen, A., Deng, Y., & Charu, V. (2025). Evaluating the generalizability of commercial healthcare claims data. *American Journal of Epidemiology, 194*(10), 2999–3006. https://doi.org/10.1093/aje/kwaf142
 
 Virnig, B., & Parsons, H. (2021, March 16). *Strengths and limitations of CMS administrative data in research*. Research Data Assistance Center. https://www.resdac.org/articles/strengths-and-limitations-cms-administrative-data-research
 
