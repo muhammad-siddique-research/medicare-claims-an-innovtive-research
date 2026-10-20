@@ -7,6 +7,7 @@ import matplotlib.pyplot as plt
 import pandas as pd
 from .models import fit_count_models
 from .advanced import run_advanced_analyses
+from .manuscript import write_research_report
 
 plt.switch_backend("Agg")
 
@@ -15,6 +16,7 @@ def write_outputs(panel: pd.DataFrame, qa: dict, output_dir: Path) -> dict:
     output_dir.mkdir(parents=True, exist_ok=True)
     coef, report = fit_count_models(panel)
     advanced = run_advanced_analyses(panel, output_dir)
+    write_research_report(qa, advanced, output_dir)
     coef.to_csv(output_dir / "count_model_coefficients.csv", index=False)
     (output_dir / "data_quality.json").write_text(json.dumps(qa, indent=2), encoding="utf-8")
     (output_dir / "model_diagnostics.json").write_text(json.dumps(report, indent=2), encoding="utf-8")
