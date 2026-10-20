@@ -34,7 +34,7 @@ def _prepare(panel: pd.DataFrame, service: str) -> pd.DataFrame:
     frame = frame.dropna()
     if len(frame) < 30 or frame.age.nunique() < 3:
         raise ValueError(f"Need >=30 complete observations and age variation for {service}")
-    if not np.isfinite(frame[["age", outcome]].to_numpy()).all():
+    if not np.isfinite(frame[["age", outcome]].to_numpy(dtype=float)).all():
         raise ValueError("Age and claim counts must be finite")
     if not frame.age.between(65, 110).all():
         raise ValueError("Age must be between 65 and 110")
