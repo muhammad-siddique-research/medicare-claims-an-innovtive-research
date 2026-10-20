@@ -12,11 +12,12 @@ from pathlib import Path
 
 import matplotlib.pyplot as plt
 
-plt.switch_backend("Agg")
 import numpy as np
 import pandas as pd
 import statsmodels.api as sm
 from statsmodels.discrete.discrete_model import NegativeBinomial
+
+plt.switch_backend("Agg")
 
 
 AGE_BREAKS = (64, 74, 84, 110)
