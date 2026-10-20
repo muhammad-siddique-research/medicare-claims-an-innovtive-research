@@ -25,3 +25,13 @@ jobs:
         run: |
           python -m medicare_claims.stress_test --n-beneficiaries 90 --replications 2 --seed 21 --output-dir reports/stress_test
           python -c "import json; from pathlib import Path; m=json.loads(Path('reports/stress_test/simulation_metadata.json').read_text()); assert m['cms_data_used'] is False"
+
+      - name: Preserve toy reproducibility reports
+        uses: actions/upload-artifact@v4
+        with:
+          name: invented-data-research-figures-py${{ matrix.python-version }}
+          path: |
+            reports/toy/
+            reports/stress_test/
+          if-no-files-found: error
+          retention-days: 14
