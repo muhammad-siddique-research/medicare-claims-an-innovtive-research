@@ -1,0 +1,16 @@
+.venv/
+__pycache__/
+.pytest_cache/
+.ruff_cache/
+*.py[cod]
+*.egg-info/
+build/
+dist/
+.DS_Store
+.ipynb_checkpoints/
+# Never commit downloaded CMS data or real claims/PHI.
+data/raw/**
+!data/raw/.gitkeep
+data/toy/**
+reports/**
+!reports/.gitkeep
