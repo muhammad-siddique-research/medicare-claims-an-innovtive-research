@@ -28,6 +28,11 @@ def main() -> None:
     panel, qa = construct_panel(
         frame, args.data_dir, args.year, min_age=args.min_age, chunk_size=args.chunk_size
     )
+    qa["source_kind"] = (
+        "invented_toy_fixture"
+        if (args.data_dir / "TOY_NOT_CMS.txt").exists()
+        else "unverified_local"
+    )
     results = write_outputs(panel, qa, args.output_dir)
     print(f"Analyzed {len(panel):,} synthetic beneficiaries. Reports: {args.output_dir}")
     print("Models:", ", ".join(results["models_fitted"]))
