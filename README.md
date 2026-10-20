@@ -162,6 +162,7 @@ The `reports/<run>/` directory is populated with:
 | Artifact | Interpretation |
 |---|---|
 | `data_quality.json` | Counts of input rows, distinct claims, duplicate lines, exclusions and conflicting amounts |
+| `input_manifest.json` | SHA-256 fingerprints, column headers and sizes for the local files; **not proof of official CMS origin** |
 | `aggregate_descriptives.csv` | **Aggregate-only** age-band means and counts; no IDs |
 | `count_model_coefficients.csv` | Coefficients, robust SE (Poisson), exponentiated age associations, AIC |
 | `model_diagnostics.json` | Sample size, dispersion diagnostic and important limitations |
