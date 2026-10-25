@@ -219,7 +219,7 @@ Do not add actual Medicare claims or patient-level files, screenshots containing
 
 **Scope of this release:** code + tests + toy validation. An official-CMS-data run and results should be created only after downloading/verifying the official files, checking data dictionaries and assessing observed enrollment completeness.
 
-### Suggested resume entry (only after you run the actual CMS data)
+### Suggested CMS Dataset
 
 > **Synthetic Medicare Claims Analytics (Python)** — Developed and tested a reproducible pipeline for CMS synthetic Medicare RIF enrollment and claims records, incorporating claim-level deduplication, beneficiary linkage, QA auditing, Poisson/negative-binomial analysis, and CI-based tests. *Synthetic data methods demonstration; no inference about real Medicare patients.*
 
